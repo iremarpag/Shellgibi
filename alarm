@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+help(){
+	echo --HELP MENU--
+	echo Input syntax : Hours Minutes Song
+	echo Example : 20 10 example_song.mp3  --  Play the example song at 20:10 everyday
+	echo ""
+	echo "Available songs to play" 
+	ls *.mp3
+}
+
+echo PRESS q TO QUIT
+OPR=${1:-help}
+if [ $OPR == help ]
+then
+	help
+else
+	HOUR=${1:-20}
+	MINUTES=${2:-0}
+	SONG=${3:-gerudo_valley.mp3}	
+
+	#crontab -e 
+	#$MINUTES $HOUR * * * /bin/mpg123 -C $SONG
+	mpg123 -C $SONG
+fi

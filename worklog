@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+
+help_func(){
+    echo -- HELP MENU --
+    echo start : Begin work log for today
+    echo end : End work log for today
+    echo startbr : Start break time
+    echo endbr : End break time
+    echo close : Close program
+    echo
+    read -p "What do you want to do? " OPR
+    run_func OPR
+}
+
+break_start_func(){
+	echo "Started new break time"
+	datetime=`date +"%T"`
+	echo -e "sbreak\t" ${datetime} >>work.txt
+}
+
+break_end_func(){
+	echo "Ended break time"
+	datetime=`date +"%T"`
+	echo -e "ebreak\t" ${datetime} >>work.txt
+}
+
+start_func(){
+	datedisp=`date +"%Y-%m-%d, %A"`
+	datetime=`date +"%T"`
+	echo "Started work log for "${datedisp}
+	echo -e "DATE " ${datedisp} >>work.txt
+	echo -e "start\t" ${datetime}>>work.txt
+}
+
+end_func(){
+	echo "Good work, have a nice day!"
+	datetime=`date +"%T"`
+	echo -e "end  \t"${datetime}>>work.txt
+	echo "">>work.txt
+	echo "=============================">>work.txt
+	echo "">>work.txt
+
+}
+
+run_func(){
+if [ $OPR == help ]
+then 
+    help_func
+elif [ $OPR == start ]
+then
+	start_func
+elif [ $OPR == end ]
+then
+	end_func
+elif [ $OPR == startbr ]
+then
+	break_start_func
+elif [ $OPR == endbr ]
+then
+	break_end_func
+elif [ $OPR == close ]
+then
+	echo Closing...
+else
+    echo Unknown command
+    help_func
+fi
+}
+
+OPR=${1:-help}
+if !(test -f work.txt)
+then
+    echo $USER>work.txt
+fi
+run_func OPR
