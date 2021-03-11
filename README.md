@@ -5,9 +5,9 @@ Spring2020 COMP304 Project1
 
 
 ### Group
-•	İrem Arpag:[iremarpag]
+•	İrem Arpag: [iremarpag]
 
-•	Ceren Akkalyoncu:[cakkalyoncu]
+•	Ceren Akkalyoncu: [cakkalyoncu]
 
 [iremarpag]: https://github.com/iremarpag
 [cakkalyoncu]: https://github.com/cakkalyoncu
